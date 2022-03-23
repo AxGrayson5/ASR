@@ -11,7 +11,7 @@ fname = 'trend.rrd'
 mailsender = "dummycuenta3@gmail.com"
 mailreceip = "dummycuenta3@gmail.com"
 mailserver = 'smtp.gmail.com: 587'
-password = 'dvduuffmlhspbmjj'
+password = 'Secreto123!'
 
 def send_alert_attached(subject):
     """ Envía un correo electrónico adjuntando la imagen en IMG
