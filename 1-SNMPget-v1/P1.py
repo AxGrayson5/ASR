@@ -51,7 +51,7 @@ def export_to_pdf(data, c):
     # Space between rows.
     padding = 25
 
-    xlist = [x + x_offset for x in [0, 350, 250, 250]]
+    xlist = [x + x_offset for x in [0, 275, 275, 390]]
     ylist = [ancho - y_offset - i * padding for i in range(max_rows_per_page + 1)]
 
     for rows in grouper(data, max_rows_per_page):
@@ -136,18 +136,18 @@ elif opcion == 4:
     Lectura = Lectura.split("\n")
     c = canvas.Canvas("Practica1-AlexisHG.pdf", pagesize=letter)
     c.setTitle("Practica 1: SNMP")
-    c.drawImage("IPN.png", 0, alto - 125, width=125, height=125)
-    c.drawImage("ESCOM.png", ancho - 125, alto - 125, width=125, height=125)
+    c.drawImage("IPN.png", 50,  alto + 25, width=100, height=100)
+    c.drawImage("ESCOM.png", 480, alto + 25, width=100, height=100)
     c.setFont("Times-Roman", 18)
-    c.drawCentredString(ancho / 2, alto - 100, "INSTITUTO POLITECNICO NACIONAL")
+    c.drawCentredString(ancho / 2.5, alto + 100, "INSTITUTO POLITECNICO NACIONAL")
     c.setFont("Times-Roman", 16)
-    c.drawCentredString(ancho / 2, alto - 200, "ESCUELA SUPERIOR DE COMPUTO")
+    c.drawCentredString(ancho / 2.5, alto, "ESCUELA SUPERIOR DE COMPUTO")
     c.setFont("Times-Roman", 14)
-    c.drawCentredString(ancho / 2, alto - 300, "Administracion de Servicios en Red")
+    c.drawCentredString(ancho / 2.5, alto - 100, "Administracion de Servicios en Red")
     c.setFont("Times-Roman", 12)
-    c.drawCentredString(ancho / 2, alto - 400, "Practica 1: Adquisicion de informacion usando SNMP")
-    c.drawCentredString(ancho / 2, alto - 500, "Tanibet Perez de los Santos")
-    c.drawCentredString(ancho / 2, alto - 600, "Hernandez Gonzalez Manuel Alexis")
+    c.drawCentredString(ancho / 2.5, alto - 200, "Practica 1: Adquisicion de informacion usando SNMP")
+    c.drawCentredString(ancho / 2.5, alto - 300, "Tanibet Perez de los Santos")
+    c.drawCentredString(ancho / 2.5, alto - 400, "Hernandez Gonzalez Manuel Alexis")
     c.showPage()
     res = obtenerinfo('1.3.6.1.2.1.1.1.0', Lectura[3], int(Lectura[2]), Lectura[0])
     sysOp = res.split(" = ")[1].split(": ")[2]
@@ -159,21 +159,21 @@ elif opcion == 4:
     comunity = res.split(" = ")[1]
 
     c.setFont("Times-Roman", 12)
-    c.drawCentredString((ancho / 2) - 50, alto - 150, "Sistema operativo: " + sysOp)
+    c.drawCentredString((ancho / 2.5) - 50, alto + 100, "Sistema operativo: " + sysOp)
     if sysOp.__contains__("Windows"):
-        c.drawImage("Windows.png", (ancho / 2) + 150, alto - 175, width=50, height=50)
+        c.drawImage("Windows.png", (ancho / 2.5) + 150, alto + 100, width=50, height=50)
     if sysOp.__contains__("Linux"):
-        c.drawImage("Linux.png", (ancho / 2) + 150, alto - 175, width=50, height=50)
+        c.drawImage("Linux.png", (ancho / 2.5) + 150, alto + 100, width=50, height=50)
     if sysOp.__contains__("Mac"):
-        c.drawImage("Mac.png", (ancho / 2) + 150, alto - 175, width=50, height=50)
+        c.drawImage("Mac.png", (ancho / 2.5) + 150, alto + 100, width=50, height=50)
 
-    c.drawCentredString(ancho / 2, alto - 250, "Contacto: " + contact)
-    c.drawCentredString(ancho / 2, alto - 350, "Nombre equipo: " + eqName)
-    c.drawCentredString(ancho / 2, alto - 450, "Comunidad: " + comunity)
+    c.drawCentredString(ancho / 2.5, alto, "Contacto: " + contact)
+    c.drawCentredString(ancho / 2.5, alto - 100, "Nombre equipo: " + eqName)
+    c.drawCentredString(ancho / 2.5, alto - 200, "Ubicacion: " + comunity)
     Tabla = [("interfaz", "estado administrativo")]
     interfaces = obtenerinfo("1.3.6.1.2.1.2.1.0", Lectura[3], int(Lectura[2]), Lectura[0])
     interfaces = interfaces.split(" = ")[1]
-    c.drawCentredString(ancho / 2, alto - 550, "#Interfaces: " + interfaces)
+    c.drawCentredString(ancho / 2.5, alto - 300, "#Interfaces: " + interfaces)
     c.showPage()
     for i in range(1, int(interfaces)):
         interfaz = obtenerinfo("1.3.6.1.2.1.2.2.1.2."+str(i), Lectura[3], int(Lectura[2]), Lectura[0])
