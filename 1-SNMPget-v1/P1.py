@@ -150,7 +150,7 @@ elif opcion == 4:
     c.drawCentredString(ancho / 2.5, alto - 400, "Hernandez Gonzalez Manuel Alexis")
     c.showPage()
     res = obtenerinfo('1.3.6.1.2.1.1.1.0', Lectura[3], int(Lectura[2]), Lectura[0])
-    sysOp = res.split(" = ")[1].split(": ")[2]
+    sysOp = res.split(" = ")[1].split("~")[1]
     res = obtenerinfo('1.3.6.1.2.1.1.4.0', Lectura[3], int(Lectura[2]), Lectura[0])
     contact = res.split(" = ")[1]
     res = obtenerinfo('1.3.6.1.2.1.1.5.0', Lectura[3], int(Lectura[2]), Lectura[0])
@@ -162,7 +162,7 @@ elif opcion == 4:
     c.drawCentredString((ancho / 2.5) - 50, alto + 100, "Sistema operativo: " + sysOp)
     if sysOp.__contains__("Windows"):
         c.drawImage("Windows.png", (ancho / 2.5) + 150, alto + 100, width=50, height=50)
-    if sysOp.__contains__("Linux"):
+    if sysOp.__contains__("Ubuntu"):
         c.drawImage("Linux.png", (ancho / 2.5) + 150, alto + 100, width=50, height=50)
     if sysOp.__contains__("Mac"):
         c.drawImage("Mac.png", (ancho / 2.5) + 150, alto + 100, width=50, height=50)
@@ -177,6 +177,7 @@ elif opcion == 4:
     c.showPage()
     for i in range(1, int(interfaces)):
         interfaz = obtenerinfo("1.3.6.1.2.1.2.2.1.2."+str(i), Lectura[3], int(Lectura[2]), Lectura[0])
+        print(interfaz)
         interfaz = interfaz.split(" = ")[1]
         interfaz = hex_to_string(interfaz)
         estado = obtenerinfo("1.3.6.1.2.1.2.2.1.7."+str(i), Lectura[3], int(Lectura[2]), Lectura[0])
