@@ -13,7 +13,7 @@ if password:
     tn.write(password.encode('ascii') + b"\n")
 
 tn.write(b"ls\n")
-tn.write(b"sudo nano archivo.txt")
+tn.write(b"copy run start")
 tn.write(b"exit\n")
 
 print(tn.read_all().decode('ascii'))
